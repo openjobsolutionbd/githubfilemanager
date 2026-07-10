@@ -2,7 +2,7 @@
 ---
 
 ```markdown
-# 📁 GitHub FM - App Master Document
+# 📁 GitHub File Manager - App Master Document
 
 > **Version:** 2.1.0  
 > **Last Updated:** 10 July 2026  
