@@ -1,0 +1,458 @@
+
+---
+
+```markdown
+# 📁 GitHub FM - App Master Document
+
+> **Version:** 2.1.0  
+> **Last Updated:** 10 July 2026  
+> **Author:** GitHub FM Team  
+> **License:** MIT  
+
+---
+
+## 📌 Table of Contents
+
+1. [Project Overview](#-project-overview)
+2. [Features](#-features)
+3. [Technology Stack](#-technology-stack)
+4. [File Structure](#-file-structure)
+5. [Installation Guide](#-installation-guide)
+6. [User Guide](#-user-guide)
+7. [Keyboard Shortcuts](#-keyboard-shortcuts)
+8. [Screenshots](#-screenshots)
+9. [PWA Information](#-pwa-information)
+10. [Development Guide](#-development-guide)
+11. [Version History](#-version-history)
+12. [Future Roadmap](#-future-roadmap)
+13. [Contribution Guide](#-contribution-guide)
+14. [License](#-license)
+15. [Contact](#-contact)
+
+---
+
+## 📋 Project Overview
+
+**GitHub FM** is a modern, feature-rich web-based file manager and code editor for GitHub repositories. It allows users to browse, create, edit, delete, and manage files and folders directly from the browser using the GitHub API.
+
+### Why GitHub FM?
+- No need to clone repositories locally
+- Full file management from any device
+- Beautiful, minimal interface
+- Works offline with PWA support
+- Syntax highlighting for 12+ languages
+
+### Key Philosophy
+- **Simple & Intuitive** – Even non-coders can use it
+- **Lightweight** – Single-page application, no backend required
+- **Progressive** – Works as a PWA on any device
+
+---
+
+## ✨ Features
+
+### Current Features (v2.1.0)
+
+| # | Feature | Status | Description |
+|---|---------|--------|-------------|
+| 1 | **Repository Browser** | ✅ Done | Browse files & folders from any GitHub repository |
+| 2 | **Branch Selector** | ✅ Done | Switch between branches instantly |
+| 3 | **Code Editor** | ✅ Done | Edit text files with syntax highlighting |
+| 4 | **Syntax Highlighting** | ✅ Done | Supports JS, Python, HTML, CSS, Markdown, etc. |
+| 5 | **Image Preview** | ✅ Done | View PNG, JPG, GIF, SVG directly in the editor |
+| 6 | **Binary File Detection** | ✅ Done | Shows notice for binary files (PDF, ZIP, etc.) |
+| 7 | **File Creation** | ✅ Done | Create new files with custom path |
+| 8 | **Folder Creation** | ✅ Done | Create new folders (with .gitkeep) |
+| 9 | **File Deletion** | ✅ Done | Delete files with commit message |
+| 10 | **Folder Deletion** | ✅ Done | Recursively delete folders |
+| 11 | **Save/Commit** | ✅ Done | Save changes with commit message |
+| 12 | **File History** | ✅ Done | View commit history for each file |
+| 13 | **Old Version Preview** | ✅ Done | View file content at specific commits |
+| 14 | **Drag & Drop Upload** | ✅ Done | Upload files by dragging from computer |
+| 15 | **Markdown Preview** | ✅ Done | Live preview for .md files |
+| 16 | **Light/Dark Theme** | ✅ Done | Toggle between themes, saved locally |
+| 17 | **Multi-Tab Editor** | ✅ Done | Open multiple files in tabs |
+| 18 | **Modified Indicator** | ✅ Done | Yellow dot shows unsaved changes |
+| 19 | **Keyboard Shortcuts** | ✅ Done | Ctrl+S, Ctrl+N, Ctrl+W, etc. |
+| 20 | **Toast Notifications** | ✅ Done | Success/error/info messages |
+| 21 | **PWA Support** | ✅ Done | Install on desktop/mobile, works offline |
+| 22 | **Auto Cache Clean** | ✅ Done | New version clears old cache automatically |
+
+### Upcoming Features (v2.2+)
+
+| # | Feature | Status | Priority |
+|---|---------|--------|----------|
+| 1 | File Search | 🟡 Planned | High |
+| 2 | Auto-Completion (IntelliSense) | 🟡 Planned | Medium |
+| 3 | OAuth Login (No Token) | 🟡 Planned | High |
+| 4 | Pull Request Management | 🟡 Planned | Medium |
+| 5 | Issue Viewer | 🟡 Planned | Medium |
+| 6 | Git Diff Viewer | 🟡 Planned | Low |
+| 7 | Multi-File Upload | 🟡 Planned | Medium |
+| 8 | File Rename/Move | 🟡 Planned | High |
+| 9 | Collaboration Features | 🟡 Planned | Low |
+
+---
+
+## 🛠️ Technology Stack
+
+### Frontend (All Client-Side)
+- **HTML5** – Structure and semantic markup
+- **CSS3** – Custom properties, flexbox, animations
+- **JavaScript (Vanilla)** – No frameworks, pure ES6+
+- **CodeMirror 5** – Syntax highlighting and code editing
+- **Marked.js** – Markdown to HTML conversion
+- **GitHub REST API v3** – Backend communication
+
+### PWA Technologies
+- **Service Worker** – Offline caching & cache management
+- **Web App Manifest** – Install prompt & standalone mode
+- **Cache API** – Static asset caching
+- **localStorage** – Theme preference persistence
+- **sessionStorage** – Token persistence per session
+
+### External CDN Dependencies
+```
+cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/
+  ├── codemirror.min.css
+  ├── codemirror.min.js
+  ├── theme/dracula.min.css
+  ├── theme/default.min.css
+  └── mode/
+      ├── javascript.min.js
+      ├── python.min.js
+      ├── xml.min.js
+      ├── htmlmixed.min.js
+      ├── css.min.js
+      ├── markdown.min.js
+      ├── clike.min.js
+      ├── shell.min.js
+      ├── yaml.min.js
+      └── sql.min.js
+cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js
+```
+
+---
+
+## 📂 File Structure
+
+```
+github-fm/
+├── index.html              # Main HTML structure (entry point)
+├── style.css               # All custom CSS styles
+├── script.js               # Core application logic (2000+ lines)
+├── sw.js                   # Service Worker for PWA & caching
+├── manifest.json           # PWA manifest for installation
+├── icon-192.png            # App icon (192x192)
+├── icon-512.png            # App icon (512x512)
+├── app_master_document.md  # This file
+├── README.md               # Short project README
+└── .gitignore              # Git ignore rules (optional)
+```
+
+---
+
+## 📥 Installation Guide
+
+### Prerequisites
+- A modern web browser (Chrome, Firefox, Edge, Safari)
+- A [GitHub Personal Access Token](https://github.com/settings/tokens) with `repo` scope
+- Internet connection (for initial load and API calls)
+
+### Quick Start (Recommended)
+1. **Download all files** from the repository
+2. **Extract** to a folder named `github-fm`
+3. **Open** `index.html` in your browser
+4. **Generate a token** from [GitHub Settings](https://github.com/settings/tokens)
+5. **Paste token** and click **Connect**
+6. **Select repository** and start browsing!
+
+### PWA Installation (Optional)
+1. Open `index.html` in Chrome/Edge
+2. Click the **install icon** in the address bar (or menu → Install)
+3. The app will open as a standalone window
+4. It will work **offline** after first load
+
+### Self-Hosting
+```bash
+# Clone the repository
+git clone https://github.com/your-username/github-fm.git
+cd github-fm
+
+# Serve with any static server
+npx serve .
+# or
+python3 -m http.server 8000
+
+# Open http://localhost:8000
+```
+
+---
+
+## 📖 User Guide
+
+### 🔌 Connecting to GitHub
+1. Enter your **Personal Access Token** in the top bar
+2. Click **Connect** button
+3. Wait for "Authenticated as [username]" toast
+4. All your repositories will appear in the dropdown
+
+### 📁 Browsing Files
+- **Left sidebar** shows the file tree
+- Click **folder names** to expand/collapse
+- Click **file names** to open in the editor
+- Use **🔄 Refresh** button to reload tree
+- Use **📉 Collapse All** to collapse folders
+
+### 📝 Editing Files
+- Open any text file to edit
+- Code will be **syntax highlighted** by language
+- Changes are tracked with a **yellow dot** in the tab
+- Press **Ctrl+S** or click **💾 Save** to commit changes
+- Enter a **commit message** in the modal
+
+### 🗑️ Deleting Files/Folders
+- **Files:** Click **🗑 Delete** button in the top bar
+- **Folders:** Hover over folder name and click **🗑 icon**
+- Confirmation modal will appear
+- Deletion is **permanent** (via GitHub API)
+
+### 📜 Viewing History
+- Open a file first
+- Click **📜 History** button
+- See list of commits for that file
+- Click any commit to **view old version**
+
+### 📤 Drag & Drop Upload
+- Connect to a repository
+- **Drag files** from your computer
+- Drop them in the **"Drop files here"** zone in the sidebar
+- Files upload to the **root** of the repository
+
+### 📝 Markdown Preview
+- Open a `.md` file
+- Click **👁 Preview** button
+- See rendered Markdown
+- Click **✏ Edit** to return to editor
+
+### 🌓 Theme Toggle
+- Click **🌓 Theme** button to switch between **Dark** and **Light** modes
+- Preference is **saved** in your browser
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Shortcut | Action | Description |
+|----------|--------|-------------|
+| `Ctrl + S` | **Save File** | Commit and save current file |
+| `Ctrl + N` | **New File** | Create a new file |
+| `Ctrl + W` | **Close Tab** | Close current file tab |
+| `Ctrl + C` | **Copy** | Copy selected text (standard) |
+| `Escape` | **Close Modal** | Dismiss any open modal |
+
+---
+
+## 📸 Screenshots
+
+### Dark Theme - File Explorer & Editor
+```
+┌──────────────────────────────────────────────────────────┐
+│  🔗 GitHub FM  🟢 Connected  [Token]  [Repo▼] [Branch▼] │
+│  [+ New File] [📁 New Folder] [💾 Save] [🗑 Delete]     │
+├──────────────┬───────────────────────────────────────────┤
+│  📂 Explorer │  [📄 app.js] [📄 style.css] [×]          │
+│  ├─ 📁 src/  │  ┌─────────────────────────────────────┐ │
+│  │  🟨 app.js│  │ 1 │ const express = require('ex..│ │
+│  │  🎨 style │  │ 2 │ const app = express();        │ │
+│  ├─ 📁 tests/│  │ 3 │ app.listen(3000);             │ │
+│  │  🐍 test  │  │ 4 │                               │ │
+│  ├─ 📝 README│  └─────────────────────────────────────┘ │
+│  └─ 📁 docs/ │  📄 src/app.js · 2.3 KB                  │
+├──────────────┴───────────────────────────────────────────┤
+│  📁 Drop files here to upload                            │
+└──────────────────────────────────────────────────────────┘
+```
+
+### Light Theme - Markdown Preview
+```
+┌──────────────────────────────────────────────────────────┐
+│  🔗 GitHub FM  🟢 Connected  [Token]  [Repo▼] [Branch▼] │
+│  [+ New File] [📁 New Folder] [✏ Edit] [🗑 Delete]     │
+├──────────────┬───────────────────────────────────────────┤
+│  📂 Explorer │  [📝 README.md] [×]                      │
+│  ├─ 📁 src/  │  ┌─────────────────────────────────────┐ │
+│  ├─ 📁 tests/│  │ # My Project                        │ │
+│  └─ 📝 README│  │ This is a **great** project!        │ │
+│              │  │ - Feature 1                          │ │
+│              │  │ - Feature 2                          │ │
+│              │  │ ```js                                │ │
+│              │  │ const x = 10;                        │ │
+│              │  │ ```                                  │ │
+│              │  └─────────────────────────────────────┘ │
+├──────────────┴───────────────────────────────────────────┤
+│  📄 README.md · 1.5 KB                                   │
+└──────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📱 PWA Information
+
+### Progressive Web App Features
+- **Installable** – Add to home screen on mobile & desktop
+- **Offline Support** – Caches all essential files
+- **Auto Update** – Detects new version, prompts user to update
+- **Cache Management** – Old caches are automatically cleaned
+- **Standalone Mode** – Opens without browser chrome
+
+### Service Worker (sw.js)
+- **Install Event:** Caches all HTML, CSS, JS, and CDN resources
+- **Activate Event:** Deletes old caches when version changes
+- **Fetch Event:** Serves from cache first, then network
+- **Message Event:** Handles "SKIP_WAITING" command from app
+
+### Cache Strategy
+- **Cache First** for static assets (HTML, CSS, JS, CDN)
+- **Network First** for GitHub API calls
+- **Cache Name:** `github-fm-v{version}` – Changing version triggers clean
+
+### Updating the App
+1. Modify any file and **change the CACHE_NAME** in `sw.js` (e.g., `v1` → `v2`)
+2. Users will see a **"New version available!"** toast
+3. Clicking **"Update"** reloads the page with the new version
+4. Old cache is automatically deleted
+
+---
+
+## 🔧 Development Guide
+
+### Setting Up Local Development
+```bash
+# Clone the repo
+git clone https://github.com/your-username/github-fm.git
+cd github-fm
+
+# Start a local server
+npx serve .
+
+# Open http://localhost:3000
+```
+
+### Code Organization
+- **index.html** – Minimal HTML structure, all elements with IDs
+- **style.css** – CSS custom properties for theming, component styles
+- **script.js** – Modular functions organized by feature:
+  - API helpers (api, getUserRepos, getContents, etc.)
+  - Connection management (connect, disconnect)
+  - File tree rendering (renderTree, toggleDir, etc.)
+  - Tab management (openFile, closeTab, renderTabs)
+  - Editor operations (initCodeMirror, saveFile, etc.)
+  - PWA logic (service worker registration)
+
+### Adding a New Feature
+1. Add HTML elements to `index.html` if needed
+2. Add styles to `style.css`
+3. Add JavaScript functions to `script.js`
+4. Bind events in the event binding section
+5. Update `sw.js` CACHE_NAME for new release
+6. Update this master document
+
+### Debugging Tips
+- Open **Developer Tools** (F12)
+- Check **Console** tab for logs
+- Check **Application → Service Workers** for PWA status
+- Check **Network** tab for API errors
+
+---
+
+## 📝 Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| **1.0.0** | 01 Jan 2026 | Initial release - Basic file browser & editor |
+| **1.5.0** | 15 Mar 2026 | Added folder deletion, image preview, binary detection |
+| **2.0.0** | 01 Jun 2026 | Added CodeMirror, syntax highlighting, drag-drop upload |
+| **2.1.0** | 10 Jul 2026 | Added PWA support, auto cache clean, markdown preview, file history |
+
+---
+
+## 🚀 Future Roadmap
+
+### v2.2.0 (Target: Sep 2026)
+- [ ] File search across repository
+- [ ] File rename/move functionality
+- [ ] OAuth login (no token needed)
+
+### v2.3.0 (Target: Dec 2026)
+- [ ] Code auto-completion (IntelliSense)
+- [ ] Pull Request management
+- [ ] Issue viewer
+
+### v3.0.0 (Target: Mar 2027)
+- [ ] Real-time collaboration
+- [ ] Git diff viewer
+- [ ] Multi-file upload support
+
+---
+
+## 🤝 Contribution Guide
+
+We welcome contributions! Here's how:
+
+1. **Fork** the repository
+2. **Clone** your fork locally
+3. **Create a branch** for your feature
+4. **Make changes** and test thoroughly
+5. **Commit** with clear messages
+6. **Push** to your fork
+7. **Submit a Pull Request**
+
+### Guidelines
+- Follow existing code style
+- Add comments for complex logic
+- Update this master document if needed
+- Test on both Chrome and Firefox
+
+---
+
+## 📄 License
+
+```
+MIT License
+
+Copyright (c) 2026 GitHub FM
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+## 📧 Contact
+
+- **GitHub Repository:** [github.com/your-username/github-fm](https://github.com/your-username/github-fm)
+- **Issues:** [github.com/your-username/github-fm/issues](https://github.com/your-username/github-fm/issues)
+- **Email:** github-fm@example.com
+
+---
+
+### 🌟 Thank you for using GitHub FM!
+```
+
+---
